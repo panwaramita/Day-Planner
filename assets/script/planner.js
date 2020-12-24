@@ -8,8 +8,14 @@ $(document).ready(function () {
   $(".saveBtn").click(function () {
     var text = $(this).siblings(".schedule").val();
     var parent = $(this).parent().attr("id");
+    if(text!==''){
     localStorage.setItem(parent, text);
-    alert("The day activity is saved");
+    alert("The event is saved.");
+    }
+    else
+    {
+      alert("enter the event.");
+    }
   });
 
   /*check if the localstoreage store any value */
@@ -36,9 +42,12 @@ $(document).ready(function () {
     }
     /*if the current time is greater then change the textarea class to past*/
     else if ($(this).attr("id") < moment().hours()) {
-      var child = $(this).children("textArea");
+      var child = $(this).children("saveBtn");
       console.log("child", child);
       $(this).children("textArea").attr("readonly", "readonly");
+      $(this).children("button").attr("disabled", "true");
+      $(this).children("button").removeClass("saveBtn");
+      $(this).children("button").addClass("disabbleBtn");
       $(this).children("textArea").addClass("past");
     }
     /*if the current time is equals then change the textarea class to present*/
