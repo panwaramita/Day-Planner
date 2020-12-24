@@ -1,7 +1,7 @@
 /*function after the page load */
 $(document).ready(function () {
   /*variable to store the current date*/
-  var currentDay = moment().format('dddd MMMM Do');
+  var currentDay = moment().format('dddd, MMMM Do');
   $("#currentDay").text(currentDay);
 
   /*when user save the event click event handeler is called */
@@ -34,7 +34,7 @@ $(document).ready(function () {
 
       $(this).children("textArea").addClass("future");
     }
-     /*if the current time is greater then change the textarea class to past*/
+    /*if the current time is greater then change the textarea class to past*/
     else if ($(this).attr("id") < moment().hours()) {
       var child = $(this).children("textArea");
       console.log("child", child);
