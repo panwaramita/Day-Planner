@@ -26,15 +26,12 @@ $(document).ready(function () {
       /*if the localstorage is not empty based on the key value display the event */
       if (text != null) {
         $(this).children("textArea").val(text);
-        console.log("localstoragevalue", text);
       }
     });
   }
 
   /* once the page load based on the time display the events*/
   $(".time-block").each(function () {
-    console.log("time", moment().hours());
-    console.log($(this).attr("id"));
     /*if the current time is less then change the textarea class to future*/
     if ($(this).attr("id") > moment().hours()) {
 
@@ -43,7 +40,6 @@ $(document).ready(function () {
     /*if the current time is greater then change the textarea class to past*/
     else if ($(this).attr("id") < moment().hours()) {
       var child = $(this).children("saveBtn");
-      console.log("child", child);
       $(this).children("textArea").attr("readonly", "readonly");
       $(this).children("button").attr("disabled", "true");
       $(this).children("button").removeClass("saveBtn");
